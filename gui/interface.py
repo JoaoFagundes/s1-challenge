@@ -1,5 +1,7 @@
+from src.model import Storage
 from gui.main_window import Ui_main_window
-from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem
+from PyQt5.QtWidgets import (QMainWindow, QTableWidgetItem, QHeaderView,
+                            QFileDialog)
 
 
 class Interface(QMainWindow, Ui_main_window):
@@ -14,15 +16,33 @@ class Interface(QMainWindow, Ui_main_window):
 
         self.new_book_button.clicked.connect(self._insert_book)
         self.sort_books_button.clicked.connect(self._sort_books)
+        self.clear_button.clicked.connect(self._clear_table)
         
         self.load_books.triggered.connect(self._load_books)
 
+        self._storage = Storage()
+
     def _insert_book(self):
         pass
-
 
     def _sort_books(self):
         pass
 
     def _load_books(self):
-        pass
+        file, _ = QFileDialog.getOpenFileName(self)
+        if(file):
+            self._storage.load_json(file)
+        self._update_table()
+
+    def _update_table(self):
+        for book in self._storage.books:
+            self.books_table.insertRow(0)
+
+            for i in range(len(book)):
+                attribute = self.books_table.horizontalHeaderItem(i).text()
+                attribute = attribute.lower()
+                self.books_table.setItem(0, i, QTableWidgetItem(str(book[attribute])))
+
+    def _clear_table(self):
+        self._storage.set_books([])
+        self.books_table.setRowCount(0)
