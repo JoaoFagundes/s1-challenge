@@ -1,5 +1,5 @@
 from gui.main_window import Ui_main_window
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem
 
 
 class Interface(QMainWindow, Ui_main_window):
@@ -11,3 +11,18 @@ class Interface(QMainWindow, Ui_main_window):
     def __init__(self):
         QMainWindow.__init__(self)
         self.setupUi(self)
+
+        self.new_book_button.clicked.connect(self._insert_book)
+        self.sort_books_button.clicked.connect(self._sort_books)
+        
+        self.load_books.triggered.connect(self._load_books)
+
+    def _insert_book(self):
+        pass
+
+
+    def _sort_books(self):
+        pass
+
+    def _load_books(self):
+        pass
