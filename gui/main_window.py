@@ -74,7 +74,7 @@ class Ui_main_window(object):
         item = self.books_table.horizontalHeaderItem(0)
         item.setText(_translate("main_window", "ID"))
         item = self.books_table.horizontalHeaderItem(1)
-        item.setText(_translate("main_window", "Name"))
+        item.setText(_translate("main_window", "Title"))
         item = self.books_table.horizontalHeaderItem(2)
         item.setText(_translate("main_window", "Author"))
         item = self.books_table.horizontalHeaderItem(3)

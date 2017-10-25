@@ -22,6 +22,18 @@ class Storage():
     def set_books(self, books_list):
         self._books = books_list
 
+    def sort(self):
+        if(not len(self._sort_priority)):
+            return []
+    
+        def order_function(list):
+            in_order = []
+            for item in self._sort_priority:
+                in_order.append(list[item[0]])
+            return in_order
+
+        return sorted(self._books, key=order_function)
+
     def load_json(self, filename):
         with open(filename, 'r') as file:
             data = json.load(file)

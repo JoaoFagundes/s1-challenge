@@ -2,28 +2,28 @@
     "books" : [
         {
             "id" : 1,
-            "name" : "Java How To Program",
+            "title" : "Java How To Program",
             "author" : "Deitel & Deitel",
             "year" : 2007
         },
 
         {
             "id" : 2,
-            "name" : "Patterns of Enterprise Application Architecture",
+            "title" : "Patterns of Enterprise Application Architecture",
             "author" : "Martin Fowler",
             "year" : 2002
         },
 
         {
             "id" : 3,
-            "name" : "Head First Design Patterns",
+            "title" : "Head First Design Patterns",
             "author" : "Elisabeth Freeman",
             "year" : 2004
         },
 
         {
             "id" : 4,
-            "name" : "Internet & World Wide Web: How to Program",
+            "title" : "Internet & World Wide Web: How to Program",
             "author" : "Deitel & Deitel",
             "year" : 2007
         }

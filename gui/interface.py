@@ -26,7 +26,7 @@ class Interface(QMainWindow, Ui_main_window):
         pass
 
     def _sort_books(self):
-        pass
+        print(self._storage.sort())
 
     def _load_books(self):
         file, _ = QFileDialog.getOpenFileName(self)
