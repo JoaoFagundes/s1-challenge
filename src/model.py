@@ -48,13 +48,19 @@ class Storage():
             Opens the configuration file and loads the sorting settings
             (priority and direction).
         """
-        try:
-            self._parser.read(filename)
-            priorities = self._parser.get('sort', 'order').split(", ")
-        except configparser.NoOptionError:
-            raise OrderingError 
-
+        priorities = self._read_sort_order(filename)
         self._sort_priority = []
+
         for item in priorities:
             attribute, direction = item.split(' ')
             self._sort_priority.append((attribute.lower(), direction.lower()))
+
+    def _read_sort_order(self, filename):
+        try:
+            self._parser.read(filename)
+            priorities = self._parser.get('sort', 'order').split(", ")
+            return priorities
+        except configparser.NoOptionError:
+            raise OrderingError("No option 'order' defined")
+        except configparser.DuplicateOptionError:
+            raise OrderingError("Multiple definitions of 'order' parameter")

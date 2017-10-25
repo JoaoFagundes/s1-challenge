@@ -47,6 +47,8 @@ class Interface(QMainWindow, Ui_main_window):
                                          )
 
     def _update_sorted_table(self, sorted):
+        self.sorted_table.setRowCount(0)
+
         for book in sorted:
             actual_row_index = self.sorted_table.rowCount()
             self.sorted_table.insertRow(actual_row_index)

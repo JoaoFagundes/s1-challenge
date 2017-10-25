@@ -4,5 +4,5 @@ class OrderingError(Exception):
         during the ordering process. In general, used when the configuration
         file has problems.
     """
-    def __init__(self):
-        self.message = "Tivemos um problema"
+    def __init__(self, message):
+        self.message = message
