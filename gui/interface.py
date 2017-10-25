@@ -26,22 +26,37 @@ class Interface(QMainWindow, Ui_main_window):
         pass
 
     def _sort_books(self):
-        print(self._storage.sort())
+        self._update_sorted_table(self._storage.sort())
 
     def _load_books(self):
         file, _ = QFileDialog.getOpenFileName(self)
         if(file):
             self._storage.load_json(file)
-        self._update_table()
+        self._update_books_table()
 
-    def _update_table(self):
+    def _update_books_table(self):
         for book in self._storage.books:
-            self.books_table.insertRow(0)
+            actual_row_index = self.books_table.rowCount()
+            self.books_table.insertRow(actual_row_index)
 
             for i in range(len(book)):
                 attribute = self.books_table.horizontalHeaderItem(i).text()
                 attribute = attribute.lower()
-                self.books_table.setItem(0, i, QTableWidgetItem(str(book[attribute])))
+                self.books_table.setItem(actual_row_index, i,
+                                         QTableWidgetItem(str(book[attribute]))
+                                         )
+
+    def _update_sorted_table(self, sorted):
+        for book in sorted:
+            actual_row_index = self.sorted_table.rowCount()
+            self.sorted_table.insertRow(actual_row_index)
+
+            for i in range(len(book)):
+                attribute = self.sorted_table.horizontalHeaderItem(i).text()
+                attribute = attribute.lower()
+                self.sorted_table.setItem(actual_row_index, i,
+                                          QTableWidgetItem(str(book[attribute]))
+                                          )
 
     def _clear_table(self):
         self._storage.set_books([])

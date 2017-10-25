@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>810</width>
-    <height>410</height>
+    <height>450</height>
    </rect>
   </property>
   <property name="maximumSize">
    <size>
     <width>810</width>
-    <height>410</height>
+    <height>450</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -28,10 +28,19 @@
      <rect>
       <x>160</x>
       <y>10</y>
-      <width>641</width>
+      <width>640</width>
       <height>191</height>
      </rect>
     </property>
+    <property name="maximumSize">
+     <size>
+      <width>640</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>158</number>
+    </attribute>
     <column>
      <property name="text">
       <string>ID</string>
@@ -86,28 +95,60 @@
      </item>
     </layout>
    </widget>
-   <widget class="QListView" name="listView">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>230</y>
-      <width>641</width>
-      <height>151</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLabel" name="ordened_label">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>230</y>
+      <y>210</y>
       <width>141</width>
-      <height>20</height>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
      <string>Sorted list of Books:</string>
     </property>
+   </widget>
+   <widget class="QTableWidget" name="sorted_table">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>210</y>
+      <width>640</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>640</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>158</number>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>ID</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Title</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Author</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Year</string>
+     </property>
+    </column>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

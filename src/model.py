@@ -23,16 +23,20 @@ class Storage():
         self._books = books_list
 
     def sort(self):
+        """
+            Applies the ordenation algorithm to the books stored, basde on
+            the priorities defined by 'sort_priority'.
+        """
         if(not len(self._sort_priority)):
             return []
     
-        def order_function(list):
-            in_order = []
-            for item in self._sort_priority:
-                in_order.append(list[item[0]])
-            return in_order
-
-        return sorted(self._books, key=order_function)
+        for item in reversed(self._sort_priority):
+            reverse = True if item[1] == 'descendant' else False
+            self._books = sorted(self._books, 
+                                 key=lambda k: k[item[0]],
+                                 reverse=reverse)
+        
+        return self._books
 
     def load_json(self, filename):
         with open(filename, 'r') as file:
