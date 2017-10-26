@@ -9,7 +9,7 @@ Código do desafio para uma vaga de eságio como Full Stack Developer na [SumOne
 ## Instalação de dependencias
 A instalação dos pacotes necessários pode ser feita através do gerenciador de pacotes [pip](https://pip.pypa.io/en/stable/installing/). Basta executar `pip install -r requirements.txt`, do diretório raiz do repositório. Depois disso, basta executar o software pelo arquivo `main.py`, utilizando o comando:
 ```
-python main.py
+  python main.py
 ```
 
 **Obs:** é sugerido utilizar um ambiente isolado do python, para evitar conflitos entre dependências. Isso pode ser feito utilizando [virtualenv](https://virtualenv.pypa.io/en/stable/), rodando os comandos 
@@ -20,3 +20,16 @@ python main.py
 antes da instalação das dependencias.
 
 Uma pequena base de livros é salva no arquivo `books/small_list.json` e pode ser carregada através do software.
+
+## Configurando a ordenação
+Para configurar a prioridade do algoritmo de ordenação é utilizado o arquivo `.config`, na raiz do repositório. O arquivo segue o padrão:
+```
+  [sort]
+  order = <Atributo#1> <Direção#1>, <Atributo#2> <Direção#2>, ...
+```
+
+Por exemplo:
+```
+  [sort]
+  Author Ascendant, Title Descendant
+```
