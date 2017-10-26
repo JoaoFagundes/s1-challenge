@@ -22,6 +22,9 @@ class Storage():
     def set_books(self, books_list):
         self._books = books_list
 
+    def insert_book(self, book):
+        self._books.append(book)
+    
     def sort(self):
         """
             Applies the ordenation algorithm to the books stored, basde on
@@ -39,9 +42,22 @@ class Storage():
         return self._books
 
     def load_json(self, filename):
-        with open(filename, 'r') as file:
-            data = json.load(file)
-        self._books = data['books']
+        """
+            Loads a JSON file with the books of the library. The file has
+            the following style:
+                {
+                    "id" : 1,
+                    "title" : "Java How To Program",
+                    "author" : "Deitel & Deitel",
+                    "year" : 2007
+                }
+        """
+        try:
+            with open(filename, 'r') as file:
+                data = json.load(file)
+            self._books.extend(data['books'])
+        except json.decoder.JSONDecodeError:
+            pass
 
     def load_config(self, filename='.config'):
         """
@@ -56,6 +72,10 @@ class Storage():
             self._sort_priority.append((attribute.lower(), direction.lower()))
 
     def _read_sort_order(self, filename):
+        """
+            Attempts to read the configuration file, treating the exceptions
+            that it may raise properly.
+        """
         try:
             self._parser.read(filename)
             priorities = self._parser.get('sort', 'order').split(", ")
