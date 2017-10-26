@@ -67,6 +67,9 @@ class Storage():
         priorities = self._read_sort_order(filename)
         self._sort_priority = []
 
+        if '' in priorities:
+            return
+        
         for item in priorities:
             attribute, direction = item.split(' ')
             self._sort_priority.append((attribute.lower(), direction.lower()))
